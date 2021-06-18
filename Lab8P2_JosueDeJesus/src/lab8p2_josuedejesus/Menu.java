@@ -72,7 +72,16 @@ public class Menu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        vin_buscar_txt = new javax.swing.JTextField();
         butt_agregar = new javax.swing.JButton();
         butt_listar = new javax.swing.JButton();
         butt_modificar = new javax.swing.JButton();
@@ -300,6 +309,18 @@ public class Menu extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jButton2.setText("Regresar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -309,9 +330,12 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1247, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(cb_categoria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(cb_categoria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1))
+                            .addComponent(jButton2))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -324,23 +348,98 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jButton1))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addContainerGap(322, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Categoria", jPanel2);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SEAT", "Škoda", "Audi", "Volkswagen", "Bentley", "Porsche", "Lamborghini", "Bugatti" }));
+
+        jLabel15.setText("Marca");
+
+        jButton3.setText("Buscar");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("VIN");
+
+        jButton4.setText("Buscar");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1271, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(vin_buscar_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton4)))
+                        .addGap(0, 781, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 849, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3)
+                            .addComponent(vin_buscar_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(332, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab2", jPanel3);
+        jTabbedPane1.addTab("Marca o VIN", jPanel3);
 
         javax.swing.GroupLayout jd_listarLayout = new javax.swing.GroupLayout(jd_listar.getContentPane());
         jd_listar.getContentPane().setLayout(jd_listarLayout);
@@ -504,15 +603,33 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Dba db = new Dba("./base1.mdb");
         db.conectar();
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "color", "motor", "precio"}));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "carroceria", "color", "motor", "precio"}));
         DefaultTableModel datos = (DefaultTableModel) jTable1.getModel();
 
         try {
-            if (cb_categoria.getSelectedItem().toString().equals("Generalista")) {
-                db.query.execute("select vin, categoria,marca, carroceria, puertas, color, motor, precio, hibridacion, pasajeros, ensamblaje from vehiculos where categoria = Generalista");
+            if (cb_categoria1.getSelectedItem().toString().equals("Generalista")) {
+                db.query.execute("select vin, categoria, marca, carroceria, color, motor, precio from vehiculos where categoria = 'Generalista'");
                 ResultSet rs = db.query.getResultSet();
                 while (rs.next()) {
-                    Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(9), rs.getInt(10)};
+                    Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)};
+                    datos.addRow(tabla);
+                }
+            }
+
+            if (cb_categoria1.getSelectedItem().toString().equals("Premium")) {
+                db.query.execute("select vin, categoria, marca, carroceria, color, motor, precio from vehiculos where categoria = 'Premium'");
+                ResultSet rs = db.query.getResultSet();
+                while (rs.next()) {
+                    Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)};
+                    datos.addRow(tabla);
+                }
+            }
+
+            if (cb_categoria1.getSelectedItem().toString().equals("Deportivo")) {
+                db.query.execute("select vin, categoria, marca, carroceria, color, motor, precio from vehiculos where categoria = 'Deportivo'");
+                ResultSet rs = db.query.getResultSet();
+                while (rs.next()) {
+                    Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)};
                     datos.addRow(tabla);
                 }
             }
@@ -521,6 +638,58 @@ public class Menu extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        jd_listar.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        Dba db = new Dba("./base1.mdb");
+        db.conectar();
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "carroceria", "color", "motor", "precio"}));
+        DefaultTableModel datos = (DefaultTableModel) jTable1.getModel();
+        String marca = jComboBox1.getSelectedItem().toString();
+        try {
+            db.query.execute("select vin, categoria, marca, carroceria, color, motor, precio from vehiculos where marca = "+marca+"");
+            ResultSet rs = db.query.getResultSet();
+            while (rs.next()) {
+                Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)};
+                datos.addRow(tabla);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        Dba db = new Dba("./base1.mdb");
+        db.conectar();
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "carroceria", "color", "motor", "precio"}));
+        DefaultTableModel datos = (DefaultTableModel) jTable1.getModel();
+        int vin = Integer.parseInt(vin_buscar_txt.getText());
+        try {
+            db.query.execute("select vin, categoria, marca, carroceria, color, motor, precio from vehiculos where vin = "+vin+"");
+            ResultSet rs = db.query.getResultSet();
+            while (rs.next()) {
+                Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)};
+                datos.addRow(tabla);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -580,12 +749,18 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_marca;
     private javax.swing.JComboBox<String> cb_motor;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -598,14 +773,17 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JDialog jd_agregar;
     private javax.swing.JDialog jd_listar;
     private javax.swing.JSpinner js_pasajeros;
     private javax.swing.JSpinner js_puertas;
     private javax.swing.JFormattedTextField precio_txt;
     private javax.swing.JFormattedTextField tiempo_txt;
+    private javax.swing.JTextField vin_buscar_txt;
     private javax.swing.JTextField vin_txt;
     // End of variables declaration//GEN-END:variables
 }
