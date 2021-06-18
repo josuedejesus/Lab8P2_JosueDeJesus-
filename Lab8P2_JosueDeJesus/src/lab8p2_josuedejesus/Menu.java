@@ -360,11 +360,10 @@ public class Menu extends javax.swing.JFrame {
 
     private void butt_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_butt_guardarMouseClicked
         // TODO add your handling code here:
-        Dba db = new Dba("*/base1.mdb");
+        Dba db = new Dba("./base1.mdb");
         db.conectar();
         try {
-            int vin, puertas, pasajeros, tiempo;
-            double precio;
+            int vin, puertas, pasajeros, ensamblaje, precio;
             String marca, carroceria, color, motor, hibridacion;
             vin = Integer.parseInt(vin_txt.getText());
             marca = cb_marca.getSelectedItem().toString();
@@ -372,17 +371,21 @@ public class Menu extends javax.swing.JFrame {
             puertas = Integer.parseInt(js_puertas.getValue().toString());
             color = cb_color.getSelectedItem().toString();
             motor = cb_motor.getSelectedItem().toString();
-            precio = Double.parseDouble(precio_txt.getText());
+            precio = Integer.parseInt(precio_txt.getText());
             hibridacion = cb_hibridacion.getSelectedItem().toString();
             pasajeros = Integer.parseInt(js_pasajeros.getValue().toString());
-            tiempo = Integer.parseInt(tiempo_txt.getText());
-            db.query.execute("Insert into alumnos" + "(VIN, Marca, Carroceria, Puertas, Color, Motor, Precio, Hibridacion, Pasajeros, Ensamblaje)"
-                    + " VALUES ('" + vin + "', '" + marca + "', '" + carroceria + "', '" + puertas + "', '" + color + "', '" + motor + "', '" + precio + "', '" + hibridacion + "', '" + pasajeros + "', '" + tiempo + "')");
+            ensamblaje = Integer.parseInt(tiempo_txt.getText());
+            db.query.execute("select vin from vehiculos");
+            ResultSet  resultado = db.query.getResultSet();
+            db.query.execute("Insert into vehiculos" + "(vin, marca, carroceria, puertas, color, motor, precio, hibridacion, pasajeros, ensamblaje)"
+                    + " VALUES ('" + vin + "', '" + marca + "', '" + carroceria + "', '" + puertas + "', '" + color + "', '" + motor + "', '" + precio + "', '" + hibridacion + "', '" + pasajeros + "', '" + ensamblaje + "')");
             db.commit();
+            JOptionPane.showMessageDialog(this, "Datos guardados exitosamente!");
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "NO se pudo guardar los datos!");
+            JOptionPane.showMessageDialog(this, "No se pudo guardar los datos!");
         }
+        db.desconectar();
     }//GEN-LAST:event_butt_guardarMouseClicked
 
     /**
