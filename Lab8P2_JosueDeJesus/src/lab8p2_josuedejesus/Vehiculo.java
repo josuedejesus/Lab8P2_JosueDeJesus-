@@ -10,5 +10,7 @@ package lab8p2_josuedejesus;
  * @author josue
  */
 public class Vehiculo {
-    
+    private int vin;
+    private String marca;
+    private String carroceria;
 }
