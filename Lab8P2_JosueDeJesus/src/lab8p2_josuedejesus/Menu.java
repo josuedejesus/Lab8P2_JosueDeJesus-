@@ -12,6 +12,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -82,6 +83,47 @@ public class Menu extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         vin_buscar_txt = new javax.swing.JTextField();
+        jd_modificar = new javax.swing.JDialog();
+        jLabel17 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        table_modificar = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        vin_txt1 = new javax.swing.JTextField();
+        cb_categoria2 = new javax.swing.JComboBox<>();
+        cb_marca1 = new javax.swing.JComboBox<>();
+        cb_carroceria1 = new javax.swing.JComboBox<>();
+        js_puertas1 = new javax.swing.JSpinner();
+        cb_color1 = new javax.swing.JComboBox<>();
+        cb_motor1 = new javax.swing.JComboBox<>();
+        precio_txt1 = new javax.swing.JFormattedTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        cb_hibridacion1 = new javax.swing.JComboBox<>();
+        jLabel27 = new javax.swing.JLabel();
+        js_pasajeros1 = new javax.swing.JSpinner();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        tiempo_txt1 = new javax.swing.JFormattedTextField();
+        jLabel30 = new javax.swing.JLabel();
+        butt_guardar2 = new javax.swing.JButton();
+        butt_guardar3 = new javax.swing.JButton();
+        Refrescar = new javax.swing.JButton();
+        jd_eliminar = new javax.swing.JDialog();
+        jLabel31 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        table_eliminar = new javax.swing.JTable();
+        Refrescar1 = new javax.swing.JButton();
+        Refrescar2 = new javax.swing.JButton();
+        Refrescar3 = new javax.swing.JButton();
         butt_agregar = new javax.swing.JButton();
         butt_listar = new javax.swing.JButton();
         butt_modificar = new javax.swing.JButton();
@@ -105,6 +147,12 @@ public class Menu extends javax.swing.JFrame {
         cb_categoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_categoriaActionPerformed(evt);
+            }
+        });
+
+        cb_marca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_marcaActionPerformed(evt);
             }
         });
 
@@ -295,6 +343,11 @@ public class Menu extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -458,6 +511,342 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel17.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel17.setText("Modificar Vehiculo");
+
+        table_modificar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        table_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_modificarMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(table_modificar);
+
+        jScrollPane3.setViewportView(jScrollPane4);
+
+        vin_txt1.setEnabled(false);
+        vin_txt1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vin_txt1ActionPerformed(evt);
+            }
+        });
+
+        cb_categoria2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Generalista", "Premium", "Deportivo" }));
+        cb_categoria2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cb_categoria2MouseClicked(evt);
+            }
+        });
+        cb_categoria2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_categoria2ActionPerformed(evt);
+            }
+        });
+
+        cb_carroceria1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sedan", "Familiar", "Hatchback", "Fastback", "SUV" }));
+
+        js_puertas1.setModel(new javax.swing.SpinnerNumberModel(2, 2, 4, 2));
+
+        cb_color1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Negro", "Blanco", "Rojo", "Amarillo", "Verde", "Rosado", "Gris", "Azul" }));
+
+        cb_motor1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Combustion", "Electrico" }));
+
+        jLabel18.setText("VIN");
+
+        jLabel19.setText("Categoria");
+
+        jLabel20.setText("Marca");
+
+        jLabel21.setText("Carroceria");
+
+        jLabel22.setText("Numero de Puertas");
+
+        jLabel23.setText("Color");
+
+        jLabel24.setText("Motor");
+
+        jLabel25.setText("Precio");
+
+        jLabel26.setText("EUR");
+
+        cb_hibridacion1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna", "Microhibrido", "Hibrido convencional", "Hibrido enchufable", "Electrico" }));
+
+        jLabel27.setText("Tipo de Hidratacion");
+
+        js_pasajeros1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 8, 1));
+
+        jLabel28.setText("Cantidad Maxima de Pasajeros");
+
+        jLabel29.setText("Tiempo de Ensamblaje");
+
+        jLabel30.setText("Segundos");
+
+        butt_guardar2.setText("Actualizar");
+        butt_guardar2.setEnabled(false);
+        butt_guardar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                butt_guardar2MouseClicked(evt);
+            }
+        });
+        butt_guardar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butt_guardar2ActionPerformed(evt);
+            }
+        });
+
+        butt_guardar3.setText("Regresar");
+        butt_guardar3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                butt_guardar3MouseClicked(evt);
+            }
+        });
+        butt_guardar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butt_guardar3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(butt_guardar2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(butt_guardar3))
+                    .addComponent(js_pasajeros1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cb_hibridacion1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(precio_txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(2, 2, 2)
+                            .addComponent(jLabel26))
+                        .addComponent(cb_color1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(vin_txt1)
+                                .addComponent(cb_categoria2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cb_marca1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cb_carroceria1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(js_puertas1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cb_motor1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(tiempo_txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel30)))
+                .addContainerGap(190, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(vin_txt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cb_categoria2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel19))
+                        .addGap(18, 18, 18)
+                        .addComponent(cb_marca1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel20))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_carroceria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(js_puertas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_color1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_motor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(precio_txt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel26))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_hibridacion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(js_pasajeros1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tiempo_txt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30)
+                    .addComponent(jLabel29))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(butt_guardar2)
+                    .addComponent(butt_guardar3))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        Refrescar.setText("Refrescar");
+        Refrescar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RefrescarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_modificarLayout = new javax.swing.GroupLayout(jd_modificar.getContentPane());
+        jd_modificar.getContentPane().setLayout(jd_modificarLayout);
+        jd_modificarLayout.setHorizontalGroup(
+            jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificarLayout.createSequentialGroup()
+                .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_modificarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3))
+                    .addGroup(jd_modificarLayout.createSequentialGroup()
+                        .addGap(549, 549, 549)
+                        .addComponent(jLabel17)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_modificarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Refrescar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(291, 291, 291))
+        );
+        jd_modificarLayout.setVerticalGroup(
+            jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Refrescar))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        jLabel31.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel31.setText("Eliminar Vehiculo");
+
+        table_eliminar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        table_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_eliminarMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(table_eliminar);
+
+        jScrollPane5.setViewportView(jScrollPane6);
+
+        Refrescar1.setText("Refrescar");
+        Refrescar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Refrescar1MouseClicked(evt);
+            }
+        });
+
+        Refrescar2.setText("Eliminar");
+        Refrescar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Refrescar2MouseClicked(evt);
+            }
+        });
+
+        Refrescar3.setText("Regresar");
+        Refrescar3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Refrescar3MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_eliminarLayout = new javax.swing.GroupLayout(jd_eliminar.getContentPane());
+        jd_eliminar.getContentPane().setLayout(jd_eliminarLayout);
+        jd_eliminarLayout.setHorizontalGroup(
+            jd_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_eliminarLayout.createSequentialGroup()
+                .addGroup(jd_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_eliminarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane5))
+                    .addGroup(jd_eliminarLayout.createSequentialGroup()
+                        .addGroup(jd_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_eliminarLayout.createSequentialGroup()
+                                .addGap(549, 549, 549)
+                                .addComponent(jLabel31))
+                            .addGroup(jd_eliminarLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(Refrescar1)))
+                        .addGap(0, 553, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jd_eliminarLayout.createSequentialGroup()
+                .addGap(554, 554, 554)
+                .addComponent(Refrescar2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Refrescar3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_eliminarLayout.setVerticalGroup(
+            jd_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_eliminarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel31)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Refrescar1)
+                .addGap(29, 29, 29)
+                .addGroup(jd_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Refrescar2)
+                    .addComponent(Refrescar3))
+                .addContainerGap(491, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         butt_agregar.setText("Agregar");
@@ -480,8 +869,18 @@ public class Menu extends javax.swing.JFrame {
         });
 
         butt_modificar.setText("Modificar");
+        butt_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                butt_modificarMouseClicked(evt);
+            }
+        });
 
         butt_modificar1.setText("Eliminar");
+        butt_modificar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                butt_modificar1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -691,6 +1090,206 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton4MouseClicked
 
+    private void vin_txt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vin_txt1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vin_txt1ActionPerformed
+
+    private void cb_categoria2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_categoria2MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cb_categoria2MouseClicked
+
+    private void cb_categoria2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_categoria2ActionPerformed
+        // TODO add your handling code here:
+        if (cb_categoria2.getSelectedItem().toString().equals("Generalista")) {
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_marca1.getModel();
+            modelo.removeAllElements();
+            modelo.addElement("SEAT");
+            modelo.addElement("Škoda");
+        }
+
+        if (cb_categoria2.getSelectedItem().toString().equals("Premium")) {
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_marca1.getModel();
+            modelo.removeAllElements();
+            modelo.addElement("Audi");
+            modelo.addElement("Volkswagen");
+            modelo.addElement("Bentley");
+        }
+
+        if (cb_categoria2.getSelectedItem().toString().equals("Deportivo")) {
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_marca1.getModel();
+            modelo.removeAllElements();
+            modelo.addElement("Porsche");
+            modelo.addElement("Lamborghini");
+            modelo.addElement("Bugatti");
+        }
+    }//GEN-LAST:event_cb_categoria2ActionPerformed
+
+    private void butt_guardar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_butt_guardar2MouseClicked
+        // TODO add your handling code here:
+        int index = -1;
+        Dba db = new Dba("./base1.mdb");
+        db.conectar();
+        //index = tabla_maestros.getSelectedRow();
+        try {
+            if (table_modificar.getSelectedRow() >= 0) {
+                
+            butt_guardar2.setEnabled(true);
+            DefaultTableModel modelo = (DefaultTableModel) table_modificar.getModel();
+            int vin = Integer.parseInt(modelo.getValueAt((table_modificar.getSelectedRow()), 0).toString());
+            vin_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 0).toString());
+            String categoria = modelo.getValueAt(table_modificar.getSelectedRow(), 1).toString();
+            String marca = modelo.getValueAt(table_modificar.getSelectedRow(), 2).toString();
+            String carroceria = modelo.getValueAt(table_modificar.getSelectedRow(), 3).toString();
+            int puertas = Integer.parseInt(modelo.getValueAt(table_modificar.getSelectedRow(), 4).toString());
+            String color = modelo.getValueAt(table_modificar.getSelectedRow(), 5).toString();
+            String motor = modelo.getValueAt(table_modificar.getSelectedRow(), 6).toString();
+            precio_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 7).toString());
+            String hidratacion = modelo.getValueAt(table_modificar.getSelectedRow(), 8).toString();
+            int pasajeros = Integer.parseInt(modelo.getValueAt(table_modificar.getSelectedRow(), 9).toString());
+            tiempo_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 10).toString());
+            cb_categoria2.setSelectedItem(categoria);
+            cb_color1.setSelectedItem(color);
+            cb_motor1.setSelectedItem(motor);
+           cb_marca1.setSelectedItem(marca);
+            cb_carroceria1.setSelectedItem(carroceria);
+            js_puertas1.setValue(puertas);
+             cb_hibridacion1.setSelectedItem(hidratacion);
+            js_pasajeros1.setValue(pasajeros);
+            db.query.execute("update vehiculos categoria ="+categoria+" where vin ="+vin+"");
+            db.query.execute("update vehiculos marca ="+marca+" where vin = "+vin+"");
+            db.query.execute("update vehiculos carroceria ="+carroceria+" where vin ="+vin+"");
+            db.commit();
+            refrescarTabla(table_modificar);
+            JOptionPane.showMessageDialog(this, "Se actualizaron los datos exitosamente!");
+            butt_guardar2.setEnabled(false);
+        }
+            
+        } catch (SQLException ex) {
+            ex.getStackTrace();
+        }
+    }//GEN-LAST:event_butt_guardar2MouseClicked
+
+    private void butt_guardar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_butt_guardar3MouseClicked
+        // TODO add your handling code here:
+        jd_modificar.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_butt_guardar3MouseClicked
+
+    private void butt_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_butt_modificarMouseClicked
+        // TODO add your handling code here:
+        Abrir(jd_modificar);
+        refrescarTabla(table_modificar);
+    }//GEN-LAST:event_butt_modificarMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void RefrescarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefrescarMouseClicked
+        // TODO add your handling code here:
+        Dba db = new Dba("./base1.mdb");
+        db.conectar();
+        
+        table_modificar.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "carroceria", "puertas","color", "motor", "precio", "hibridacion", "pasajeros", "ensamblaje"}));
+        DefaultTableModel datos = (DefaultTableModel) table_modificar.getModel();
+        
+        try{
+        db.query.execute("select vin, categoria, marca, carroceria, puertas, color, motor, precio, hibridacion, pasajeros, ensamblaje from vehiculos");
+                ResultSet rs = db.query.getResultSet();
+                while (rs.next()) {
+                    Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),rs.getInt(10), rs.getInt(11)};
+                    datos.addRow(tabla);
+                }
+        }catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }//GEN-LAST:event_RefrescarMouseClicked
+
+    private void table_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_modificarMouseClicked
+        // TODO add your handling code here:
+        if (table_modificar.getSelectedRow() >= 0) {
+            butt_guardar2.setEnabled(true);
+            DefaultTableModel modelo = (DefaultTableModel) table_modificar.getModel();
+            vin_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 0).toString());
+            String categoria = modelo.getValueAt(table_modificar.getSelectedRow(), 1).toString();
+            String marca = modelo.getValueAt(table_modificar.getSelectedRow(), 2).toString();
+            String carroceria = modelo.getValueAt(table_modificar.getSelectedRow(), 3).toString();
+            int puertas = Integer.parseInt(modelo.getValueAt(table_modificar.getSelectedRow(), 4).toString());
+            String color = modelo.getValueAt(table_modificar.getSelectedRow(), 5).toString();
+            String motor = modelo.getValueAt(table_modificar.getSelectedRow(), 6).toString();
+            precio_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 7).toString());
+            String hidratacion = modelo.getValueAt(table_modificar.getSelectedRow(), 8).toString();
+            int pasajeros = Integer.parseInt(modelo.getValueAt(table_modificar.getSelectedRow(), 9).toString());
+            tiempo_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 10).toString());
+            cb_categoria2.setSelectedItem(categoria);
+            cb_color1.setSelectedItem(color);
+            cb_motor1.setSelectedItem(motor);
+           cb_marca1.setSelectedItem(marca);
+            cb_carroceria1.setSelectedItem(carroceria);
+            js_puertas1.setValue(puertas);
+             cb_hibridacion1.setSelectedItem(hidratacion);
+            js_pasajeros1.setValue(pasajeros);
+        }
+    }//GEN-LAST:event_table_modificarMouseClicked
+
+    private void cb_marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_marcaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_marcaActionPerformed
+
+    private void butt_guardar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butt_guardar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_butt_guardar2ActionPerformed
+
+    private void butt_guardar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butt_guardar3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_butt_guardar3ActionPerformed
+
+    private void Refrescar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Refrescar1MouseClicked
+        // TODO add your handling code here:
+        refrescarTabla(table_eliminar);
+    }//GEN-LAST:event_Refrescar1MouseClicked
+
+    private void table_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_eliminarMouseClicked
+        // TODO add your handling code here:
+        Dba db = new Dba("./base1.mdb");
+        db.conectar();
+        if (table_eliminar.getSelectedRow() >= 0) {
+            butt_guardar2.setEnabled(true);
+            DefaultTableModel modelo = (DefaultTableModel) table_eliminar.getModel();
+            int vin = Integer.parseInt(modelo.getValueAt(table_eliminar.getSelectedRow(), 0).toString());
+            try
+            {
+                db.query.execute("delete from vehiculos where vin ="+vin+"");
+                db.commit();
+            }catch(SQLException ex)
+            {
+                ex.printStackTrace();
+            }
+            db.desconectar();
+        }
+    }//GEN-LAST:event_table_eliminarMouseClicked
+
+    private void Refrescar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Refrescar2MouseClicked
+        // TODO add your handling code here:
+        refrescarTabla(table_eliminar);
+        JOptionPane.showMessageDialog(this, "Vehiculo ha sido eliminado exitosamente!");
+    }//GEN-LAST:event_Refrescar2MouseClicked
+
+    private void butt_modificar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_butt_modificar1MouseClicked
+        // TODO add your handling code here:
+        Abrir(jd_eliminar);
+        refrescarTabla(table_modificar);
+    }//GEN-LAST:event_butt_modificar1MouseClicked
+
+    private void Refrescar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Refrescar3MouseClicked
+        // TODO add your handling code here:
+        jd_eliminar.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_Refrescar3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -733,21 +1332,55 @@ public class Menu extends javax.swing.JFrame {
         opcion.setLocationRelativeTo(this);
         opcion.setVisible(true);
     }
+    
+    private void refrescarTabla(JTable table)
+    {
+        Dba db = new Dba("./base1.mdb");
+        db.conectar();
+        
+        table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "carroceria", "puertas","color", "motor", "precio", "hibridacion", "pasajeros", "ensamblaje"}));
+        DefaultTableModel datos = (DefaultTableModel) table.getModel();
+        
+        try{
+        db.query.execute("select vin, categoria, marca, carroceria, puertas, color, motor, precio, hibridacion, pasajeros, ensamblaje from vehiculos");
+                ResultSet rs = db.query.getResultSet();
+                while (rs.next()) {
+                    Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),rs.getInt(10), rs.getInt(11)};
+                    datos.addRow(tabla);
+                }
+        }catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Refrescar;
+    private javax.swing.JButton Refrescar1;
+    private javax.swing.JButton Refrescar2;
+    private javax.swing.JButton Refrescar3;
     private javax.swing.JButton butt_agregar;
     private javax.swing.JButton butt_guardar;
     private javax.swing.JButton butt_guardar1;
+    private javax.swing.JButton butt_guardar2;
+    private javax.swing.JButton butt_guardar3;
     private javax.swing.JButton butt_listar;
     private javax.swing.JButton butt_modificar;
     private javax.swing.JButton butt_modificar1;
     private javax.swing.JComboBox<String> cb_carroceria;
+    private javax.swing.JComboBox<String> cb_carroceria1;
     private javax.swing.JComboBox<String> cb_categoria;
     private javax.swing.JComboBox<String> cb_categoria1;
+    private javax.swing.JComboBox<String> cb_categoria2;
     private javax.swing.JComboBox<String> cb_color;
+    private javax.swing.JComboBox<String> cb_color1;
     private javax.swing.JComboBox<String> cb_hibridacion;
+    private javax.swing.JComboBox<String> cb_hibridacion1;
     private javax.swing.JComboBox<String> cb_marca;
+    private javax.swing.JComboBox<String> cb_marca1;
     private javax.swing.JComboBox<String> cb_motor;
+    private javax.swing.JComboBox<String> cb_motor1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -761,8 +1394,23 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -772,18 +1420,32 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JDialog jd_agregar;
+    private javax.swing.JDialog jd_eliminar;
     private javax.swing.JDialog jd_listar;
+    private javax.swing.JDialog jd_modificar;
     private javax.swing.JSpinner js_pasajeros;
+    private javax.swing.JSpinner js_pasajeros1;
     private javax.swing.JSpinner js_puertas;
+    private javax.swing.JSpinner js_puertas1;
     private javax.swing.JFormattedTextField precio_txt;
+    private javax.swing.JFormattedTextField precio_txt1;
+    private javax.swing.JTable table_eliminar;
+    private javax.swing.JTable table_modificar;
     private javax.swing.JFormattedTextField tiempo_txt;
+    private javax.swing.JFormattedTextField tiempo_txt1;
     private javax.swing.JTextField vin_buscar_txt;
     private javax.swing.JTextField vin_txt;
+    private javax.swing.JTextField vin_txt1;
     // End of variables declaration//GEN-END:variables
 }
