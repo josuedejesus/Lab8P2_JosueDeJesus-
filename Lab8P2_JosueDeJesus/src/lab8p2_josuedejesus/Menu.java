@@ -580,6 +580,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel26.setText("EUR");
 
         cb_hibridacion1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna", "Microhibrido", "Hibrido convencional", "Hibrido enchufable", "Electrico" }));
+        cb_hibridacion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_hibridacion1ActionPerformed(evt);
+            }
+        });
 
         jLabel27.setText("Tipo de Hidratacion");
 
@@ -588,6 +593,12 @@ public class Menu extends javax.swing.JFrame {
         jLabel28.setText("Cantidad Maxima de Pasajeros");
 
         jLabel29.setText("Tiempo de Ensamblaje");
+
+        tiempo_txt1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tiempo_txt1ActionPerformed(evt);
+            }
+        });
 
         jLabel30.setText("Segundos");
 
@@ -1056,11 +1067,11 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Dba db = new Dba("./base1.mdb");
         db.conectar();
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "carroceria", "color", "motor", "precio"}));
-        DefaultTableModel datos = (DefaultTableModel) jTable1.getModel();
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "carroceria", "color", "motor", "precio"}));
+        DefaultTableModel datos = (DefaultTableModel) jTable2.getModel();
         String marca = jComboBox1.getSelectedItem().toString();
         try {
-            db.query.execute("select vin, categoria, marca, carroceria, color, motor, precio from vehiculos where marca = "+marca+"");
+            db.query.execute("select vin, categoria, marca, carroceria, color, motor, precio from vehiculos where marca='"+marca+"'");
             ResultSet rs = db.query.getResultSet();
             while (rs.next()) {
                 Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)};
@@ -1069,17 +1080,18 @@ public class Menu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        db.desconectar();
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
         Dba db = new Dba("./base1.mdb");
         db.conectar();
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "carroceria", "color", "motor", "precio"}));
-        DefaultTableModel datos = (DefaultTableModel) jTable1.getModel();
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "carroceria", "color", "motor", "precio"}));
+        DefaultTableModel datos = (DefaultTableModel) jTable2.getModel();
         int vin = Integer.parseInt(vin_buscar_txt.getText());
         try {
-            db.query.execute("select vin, categoria, marca, carroceria, color, motor, precio from vehiculos where vin = "+vin+"");
+            db.query.execute("select vin, categoria, marca, carroceria, color, motor, precio from vehiculos where vin ="+vin+"");
             ResultSet rs = db.query.getResultSet();
             while (rs.next()) {
                 Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)};
@@ -1088,6 +1100,7 @@ public class Menu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        db.desconectar();
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void vin_txt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vin_txt1ActionPerformed
@@ -1130,13 +1143,12 @@ public class Menu extends javax.swing.JFrame {
         int index = -1;
         Dba db = new Dba("./base1.mdb");
         db.conectar();
-        //index = tabla_maestros.getSelectedRow();
         try {
             if (table_modificar.getSelectedRow() >= 0) {
                 
             butt_guardar2.setEnabled(true);
             DefaultTableModel modelo = (DefaultTableModel) table_modificar.getModel();
-            int vin = Integer.parseInt(modelo.getValueAt((table_modificar.getSelectedRow()), 0).toString());
+            int vin = Integer.parseInt(vin_txt1.getText());
             vin_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 0).toString());
             String categoria = modelo.getValueAt(table_modificar.getSelectedRow(), 1).toString();
             String marca = modelo.getValueAt(table_modificar.getSelectedRow(), 2).toString();
@@ -1148,17 +1160,14 @@ public class Menu extends javax.swing.JFrame {
             String hidratacion = modelo.getValueAt(table_modificar.getSelectedRow(), 8).toString();
             int pasajeros = Integer.parseInt(modelo.getValueAt(table_modificar.getSelectedRow(), 9).toString());
             tiempo_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 10).toString());
-            cb_categoria2.setSelectedItem(categoria);
-            cb_color1.setSelectedItem(color);
-            cb_motor1.setSelectedItem(motor);
-           cb_marca1.setSelectedItem(marca);
-            cb_carroceria1.setSelectedItem(carroceria);
-            js_puertas1.setValue(puertas);
-             cb_hibridacion1.setSelectedItem(hidratacion);
-            js_pasajeros1.setValue(pasajeros);
-            db.query.execute("update vehiculos categoria ="+categoria+" where vin ="+vin+"");
-            db.query.execute("update vehiculos marca ="+marca+" where vin = "+vin+"");
-            db.query.execute("update vehiculos carroceria ="+carroceria+" where vin ="+vin+"");
+
+            db.query.execute("update vehiculos set categoria ='"+cb_categoria2.getSelectedItem().toString()+"', "
+                    + "marca = '"+cb_marca1.getSelectedItem().toString()+"', "
+                            + "carroceria = '"+cb_carroceria1.getSelectedItem().toString()+"', "
+                                    + "puertas = '"+js_puertas1.getValue()+"', "
+                                            + "color = '"+cb_color1.getSelectedItem().toString()+"',"
+                                                    + "motor = '"+cb_motor1.getSelectedItem().toString()+"',"
+                                                            + "precio = '"+precio_txt1.getText()+"' where vin ="+vin_txt1.getText()+"");
             db.commit();
             refrescarTabla(table_modificar);
             JOptionPane.showMessageDialog(this, "Se actualizaron los datos exitosamente!");
@@ -1168,6 +1177,7 @@ public class Menu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             ex.getStackTrace();
         }
+        db.desconectar();
     }//GEN-LAST:event_butt_guardar2MouseClicked
 
     private void butt_guardar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_butt_guardar3MouseClicked
@@ -1289,6 +1299,14 @@ public class Menu extends javax.swing.JFrame {
         jd_eliminar.dispose();
         this.setVisible(true);
     }//GEN-LAST:event_Refrescar3MouseClicked
+
+    private void cb_hibridacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_hibridacion1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_hibridacion1ActionPerformed
+
+    private void tiempo_txt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempo_txt1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tiempo_txt1ActionPerformed
 
     /**
      * @param args the command line arguments
