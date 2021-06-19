@@ -200,6 +200,11 @@ public class Menu extends javax.swing.JFrame {
                 butt_guardarMouseClicked(evt);
             }
         });
+        butt_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butt_guardarActionPerformed(evt);
+            }
+        });
 
         butt_guardar1.setText("Regresar");
         butt_guardar1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -992,6 +997,17 @@ public class Menu extends javax.swing.JFrame {
             db.query.execute("Insert into vehiculos" + "(vin, categoria, marca, carroceria, puertas, color, motor, precio, hibridacion, pasajeros, ensamblaje)"
                     + " VALUES ('" + vin + "', '" + categoria + "','" + marca + "', '" + carroceria + "', '" + puertas + "', '" + color + "', '" + motor + "', '" + precio + "', '" + hibridacion + "', '" + pasajeros + "', '" + ensamblaje + "')");
             db.commit();
+            vin_txt.setText("");
+            cb_categoria.setSelectedIndex(0);
+            cb_marca.setSelectedItem("");
+            cb_carroceria.setSelectedIndex(0);
+            js_puertas.setValue(2);
+            cb_color.setSelectedIndex(0);
+            cb_motor.setSelectedIndex(0);
+            precio_txt.setText("");
+            cb_hibridacion.setSelectedIndex(0);
+            js_pasajeros.setValue(1);
+            tiempo_txt.setText("");
             JOptionPane.showMessageDialog(this, "Datos guardados exitosamente!");
 
         } catch (SQLException ex) {
@@ -1071,7 +1087,7 @@ public class Menu extends javax.swing.JFrame {
         DefaultTableModel datos = (DefaultTableModel) jTable2.getModel();
         String marca = jComboBox1.getSelectedItem().toString();
         try {
-            db.query.execute("select vin, categoria, marca, carroceria, color, motor, precio from vehiculos where marca='"+marca+"'");
+            db.query.execute("select vin, categoria, marca, carroceria, color, motor, precio from vehiculos where marca='" + marca + "'");
             ResultSet rs = db.query.getResultSet();
             while (rs.next()) {
                 Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)};
@@ -1091,7 +1107,7 @@ public class Menu extends javax.swing.JFrame {
         DefaultTableModel datos = (DefaultTableModel) jTable2.getModel();
         int vin = Integer.parseInt(vin_buscar_txt.getText());
         try {
-            db.query.execute("select vin, categoria, marca, carroceria, color, motor, precio from vehiculos where vin ="+vin+"");
+            db.query.execute("select vin, categoria, marca, carroceria, color, motor, precio from vehiculos where vin =" + vin + "");
             ResultSet rs = db.query.getResultSet();
             while (rs.next()) {
                 Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)};
@@ -1109,7 +1125,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void cb_categoria2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_categoria2MouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_cb_categoria2MouseClicked
 
     private void cb_categoria2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_categoria2ActionPerformed
@@ -1145,35 +1161,49 @@ public class Menu extends javax.swing.JFrame {
         db.conectar();
         try {
             if (table_modificar.getSelectedRow() >= 0) {
-                
-            butt_guardar2.setEnabled(true);
-            DefaultTableModel modelo = (DefaultTableModel) table_modificar.getModel();
-            int vin = Integer.parseInt(vin_txt1.getText());
-            vin_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 0).toString());
-            String categoria = modelo.getValueAt(table_modificar.getSelectedRow(), 1).toString();
-            String marca = modelo.getValueAt(table_modificar.getSelectedRow(), 2).toString();
-            String carroceria = modelo.getValueAt(table_modificar.getSelectedRow(), 3).toString();
-            int puertas = Integer.parseInt(modelo.getValueAt(table_modificar.getSelectedRow(), 4).toString());
-            String color = modelo.getValueAt(table_modificar.getSelectedRow(), 5).toString();
-            String motor = modelo.getValueAt(table_modificar.getSelectedRow(), 6).toString();
-            precio_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 7).toString());
-            String hidratacion = modelo.getValueAt(table_modificar.getSelectedRow(), 8).toString();
-            int pasajeros = Integer.parseInt(modelo.getValueAt(table_modificar.getSelectedRow(), 9).toString());
-            tiempo_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 10).toString());
 
-            db.query.execute("update vehiculos set categoria ='"+cb_categoria2.getSelectedItem().toString()+"', "
-                    + "marca = '"+cb_marca1.getSelectedItem().toString()+"', "
-                            + "carroceria = '"+cb_carroceria1.getSelectedItem().toString()+"', "
-                                    + "puertas = '"+js_puertas1.getValue()+"', "
-                                            + "color = '"+cb_color1.getSelectedItem().toString()+"',"
-                                                    + "motor = '"+cb_motor1.getSelectedItem().toString()+"',"
-                                                            + "precio = '"+precio_txt1.getText()+"' where vin ="+vin_txt1.getText()+"");
-            db.commit();
-            refrescarTabla(table_modificar);
-            JOptionPane.showMessageDialog(this, "Se actualizaron los datos exitosamente!");
-            butt_guardar2.setEnabled(false);
-        }
-            
+                butt_guardar2.setEnabled(true);
+                DefaultTableModel modelo = (DefaultTableModel) table_modificar.getModel();
+                int vin = Integer.parseInt(vin_txt1.getText());
+                vin_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 0).toString());
+                String categoria = modelo.getValueAt(table_modificar.getSelectedRow(), 1).toString();
+                String marca = modelo.getValueAt(table_modificar.getSelectedRow(), 2).toString();
+                String carroceria = modelo.getValueAt(table_modificar.getSelectedRow(), 3).toString();
+                int puertas = Integer.parseInt(modelo.getValueAt(table_modificar.getSelectedRow(), 4).toString());
+                String color = modelo.getValueAt(table_modificar.getSelectedRow(), 5).toString();
+                String motor = modelo.getValueAt(table_modificar.getSelectedRow(), 6).toString();
+                precio_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 7).toString());
+                String hidratacion = modelo.getValueAt(table_modificar.getSelectedRow(), 8).toString();
+                int pasajeros = Integer.parseInt(modelo.getValueAt(table_modificar.getSelectedRow(), 9).toString());
+                tiempo_txt1.setText(modelo.getValueAt(table_modificar.getSelectedRow(), 10).toString());
+
+                db.query.execute("update vehiculos set categoria ='" + cb_categoria2.getSelectedItem().toString() + "', "
+                        + "marca = '" + cb_marca1.getSelectedItem().toString() + "', "
+                        + "carroceria = '" + cb_carroceria1.getSelectedItem().toString() + "', "
+                        + "puertas = '" + js_puertas1.getValue() + "', "
+                        + "color = '" + cb_color1.getSelectedItem().toString() + "',"
+                        + "motor = '" + cb_motor1.getSelectedItem().toString() + "',"
+                        + "precio = '" + precio_txt1.getText() + "' where vin =" + vin_txt1.getText() + "");
+                db.query.execute("update vehiculos set hibridacion ='" + cb_hibridacion1.getSelectedItem().toString() + "', "
+                        + "pasajeros = '" + js_pasajeros1.getValue() + "', "
+                        + "ensamblaje = '" + tiempo_txt1.getText() + "' where vin =" + vin_txt1.getText() + "");
+                db.commit();
+                refrescarTabla(table_modificar);
+                vin_txt1.setText("");
+                cb_categoria2.setSelectedIndex(0);
+                cb_marca1.setSelectedItem("");
+                cb_carroceria1.setSelectedIndex(0);
+                js_puertas1.setValue(2);
+                cb_color1.setSelectedIndex(0);
+                cb_motor1.setSelectedIndex(0);
+                precio_txt1.setText("");
+                cb_hibridacion1.setSelectedIndex(0);
+                js_pasajeros1.setValue(1);
+                tiempo_txt1.setText("");
+                JOptionPane.showMessageDialog(this, "Se actualizaron los datos exitosamente!");
+                butt_guardar2.setEnabled(false);
+            }
+
         } catch (SQLException ex) {
             ex.getStackTrace();
         }
@@ -1200,19 +1230,18 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Dba db = new Dba("./base1.mdb");
         db.conectar();
-        
-        table_modificar.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "carroceria", "puertas","color", "motor", "precio", "hibridacion", "pasajeros", "ensamblaje"}));
+
+        table_modificar.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "carroceria", "puertas", "color", "motor", "precio", "hibridacion", "pasajeros", "ensamblaje"}));
         DefaultTableModel datos = (DefaultTableModel) table_modificar.getModel();
-        
-        try{
-        db.query.execute("select vin, categoria, marca, carroceria, puertas, color, motor, precio, hibridacion, pasajeros, ensamblaje from vehiculos");
-                ResultSet rs = db.query.getResultSet();
-                while (rs.next()) {
-                    Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),rs.getInt(10), rs.getInt(11)};
-                    datos.addRow(tabla);
-                }
-        }catch(SQLException ex)
-        {
+
+        try {
+            db.query.execute("select vin, categoria, marca, carroceria, puertas, color, motor, precio, hibridacion, pasajeros, ensamblaje from vehiculos");
+            ResultSet rs = db.query.getResultSet();
+            while (rs.next()) {
+                Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getInt(11)};
+                datos.addRow(tabla);
+            }
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         db.desconectar();
@@ -1237,10 +1266,10 @@ public class Menu extends javax.swing.JFrame {
             cb_categoria2.setSelectedItem(categoria);
             cb_color1.setSelectedItem(color);
             cb_motor1.setSelectedItem(motor);
-           cb_marca1.setSelectedItem(marca);
+            cb_marca1.setSelectedItem(marca);
             cb_carroceria1.setSelectedItem(carroceria);
             js_puertas1.setValue(puertas);
-             cb_hibridacion1.setSelectedItem(hidratacion);
+            cb_hibridacion1.setSelectedItem(hidratacion);
             js_pasajeros1.setValue(pasajeros);
         }
     }//GEN-LAST:event_table_modificarMouseClicked
@@ -1270,12 +1299,10 @@ public class Menu extends javax.swing.JFrame {
             butt_guardar2.setEnabled(true);
             DefaultTableModel modelo = (DefaultTableModel) table_eliminar.getModel();
             int vin = Integer.parseInt(modelo.getValueAt(table_eliminar.getSelectedRow(), 0).toString());
-            try
-            {
-                db.query.execute("delete from vehiculos where vin ="+vin+"");
+            try {
+                db.query.execute("delete from vehiculos where vin =" + vin + "");
                 db.commit();
-            }catch(SQLException ex)
-            {
+            } catch (SQLException ex) {
                 ex.printStackTrace();
             }
             db.desconectar();
@@ -1307,6 +1334,10 @@ public class Menu extends javax.swing.JFrame {
     private void tiempo_txt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempo_txt1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tiempo_txt1ActionPerformed
+
+    private void butt_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butt_guardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_butt_guardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1350,24 +1381,22 @@ public class Menu extends javax.swing.JFrame {
         opcion.setLocationRelativeTo(this);
         opcion.setVisible(true);
     }
-    
-    private void refrescarTabla(JTable table)
-    {
+
+    private void refrescarTabla(JTable table) {
         Dba db = new Dba("./base1.mdb");
         db.conectar();
-        
-        table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "carroceria", "puertas","color", "motor", "precio", "hibridacion", "pasajeros", "ensamblaje"}));
+
+        table.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"vin", "categoria", "marca", "carroceria", "puertas", "color", "motor", "precio", "hibridacion", "pasajeros", "ensamblaje"}));
         DefaultTableModel datos = (DefaultTableModel) table.getModel();
-        
-        try{
-        db.query.execute("select vin, categoria, marca, carroceria, puertas, color, motor, precio, hibridacion, pasajeros, ensamblaje from vehiculos");
-                ResultSet rs = db.query.getResultSet();
-                while (rs.next()) {
-                    Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9),rs.getInt(10), rs.getInt(11)};
-                    datos.addRow(tabla);
-                }
-        }catch(SQLException ex)
-        {
+
+        try {
+            db.query.execute("select vin, categoria, marca, carroceria, puertas, color, motor, precio, hibridacion, pasajeros, ensamblaje from vehiculos");
+            ResultSet rs = db.query.getResultSet();
+            while (rs.next()) {
+                Object tabla[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getInt(11)};
+                datos.addRow(tabla);
+            }
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         db.desconectar();
